@@ -5,9 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @ControllerAdvice
 class MovieEndpointExceptionHandler {
@@ -23,13 +25,17 @@ class MovieEndpointExceptionHandler {
         return new ResponseEntity<>(errorDto, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(value = Exception.class)
-    ResponseEntity<ErrorDto> handleServerException(Exception exception, WebRequest request) {
+    @ExceptionHandler(value = {
+            MethodArgumentNotValidException.class,
+            MethodArgumentTypeMismatchException.class
+    })
+    ResponseEntity<ErrorDto> handleValidationException(Exception exception, WebRequest request) {
         ErrorDto errorDto = new ErrorDto();
-        errorDto.code = HttpStatus.INTERNAL_SERVER_ERROR.value();
-        errorDto.message = "Unexpected server error: " + exception.getLocalizedMessage();
+        errorDto.code = HttpStatus.BAD_REQUEST.value();
+        errorDto.message = "Invalid request: " + exception.getLocalizedMessage();
         LOG.error(exception.getMessage());
-        return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
     }
+
 
 }
