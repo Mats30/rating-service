@@ -29,7 +29,7 @@ To run frontend part you need to have NodeJS with npm. After clone you need to g
 npm install
 ```
 
-After that please check endpoint urls, you'll find it in `src/config/config.js` file. Set "baseUrl" to backend address. Then you can run
+After that please check endpoint urls, you'll find it in `frontend/src/config/config.js` file. Set `baseUrl` to backend address. Then you can run
 application with 
 
 ```
