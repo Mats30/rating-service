@@ -10,5 +10,8 @@ public class AddRatingRequest {
 
     @Min(value = 1, message = "Rating should be greater than or equal 1")
     @Max(value = 10, message = "Rating should be less than or equal 10")
-    public short rate;
+    public Integer rate;
+
+
+    public AddRatingRequest(){}
 }

@@ -16,7 +16,7 @@ public final class Movie {
     private String title;
     private LocalDate date;
     private Genre genre;
-    private List<Short> ratings;
+    private List<Integer> ratings;
 
     public Movie(String title, LocalDate date, Genre genre) {
         this.title = title;
@@ -41,12 +41,12 @@ public final class Movie {
         return genre;
     }
 
-    public List<Short> ratings() {
+    public List<Integer> ratings() {
         return ratings;
     }
 
 
-    public void addRating(short rating) {
+    public void addRating(int rating) {
         this.ratings.add(rating);
     }
 

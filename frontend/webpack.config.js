@@ -3,6 +3,10 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+    devServer: {
+        port: 9000
+    },
+    
     module: {
         rules: [
             {
@@ -26,12 +30,15 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
                 exclude: /node_modules/,
                 use: [
-                  {
-                    loader: 'file-loader?name=[name].[ext]'
-                  },
+                    {
+                        loader: 'file-loader'
+                    },
                 ],
-              },
+            },
         ]
+    },
+    resolve: {
+        extensions: ["*", ".js", ".jsx"]
     },
     plugins: [
         new HtmlWebPackPlugin({
