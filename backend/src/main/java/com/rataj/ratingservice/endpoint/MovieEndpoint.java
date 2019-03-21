@@ -4,6 +4,8 @@ package com.rataj.ratingservice.endpoint;
 import com.rataj.ratingservice.endpoint.dto.AddRatingRequest;
 import com.rataj.ratingservice.model.MovieDto;
 import com.rataj.ratingservice.service.MovieService;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
