@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { moviesUrl } from '../../config/config';
 import MovieListItem from './MovieListItem';
 import { successfulResponseMovies, errorResponse } from "../../actions/actions"
-import './MovieList.css'
 
 class MovieList extends React.Component {
 
